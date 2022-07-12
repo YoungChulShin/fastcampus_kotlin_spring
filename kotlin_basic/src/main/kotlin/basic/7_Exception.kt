@@ -1,3 +1,4 @@
+package basic
 fun main() {
 
     // 명시적으로 checkedException 체크를 강조하지 않는다

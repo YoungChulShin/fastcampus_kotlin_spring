@@ -1,3 +1,5 @@
+package basic
+
 // 기본은 final
 open class Dog(open var age: Int = 0) {
 

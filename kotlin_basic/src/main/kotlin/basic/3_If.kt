@@ -1,3 +1,5 @@
+package basic
+
 fun main() {
     // if-else
     val job = "Software engineer"

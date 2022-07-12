@@ -1,3 +1,5 @@
+package basic
+
 enum class PaymentStatus(val label: String): Payable {
     UNPAID("미지급") {
         override fun isPayable() = true

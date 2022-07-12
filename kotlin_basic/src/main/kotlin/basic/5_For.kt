@@ -1,3 +1,4 @@
+package basic
 fun main() {
 
     // 범위 연산자

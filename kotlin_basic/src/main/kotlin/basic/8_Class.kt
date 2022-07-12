@@ -1,3 +1,5 @@
+package basic
+
 class Coffee(
     val name: String = "",
     val price: Int = 0,

@@ -1,3 +1,5 @@
+package basic
+
 // 클래스 없어 변수 선언 가능
 // 탑레벨 변수
 var x = 5
