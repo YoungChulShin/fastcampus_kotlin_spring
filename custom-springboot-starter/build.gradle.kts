@@ -13,7 +13,6 @@ plugins {
 allprojects {
     group = "com.example"
     version = "0.0.1-SNAPSHOT"
-    java.sourceCompatibility = JavaVersion.VERSION_17
 
     repositories {
         mavenLocal()
@@ -23,7 +22,7 @@ allprojects {
 
 subprojects {
     apply(plugin = "kotlin")
-    apply(plugin = "kotlin-apt")
+    apply(plugin = "kotlin-kapt")
     apply(plugin = "kotlin-spring")
     apply(plugin = "maven-publish")
     apply(plugin = "io.spring.dependency-management")
