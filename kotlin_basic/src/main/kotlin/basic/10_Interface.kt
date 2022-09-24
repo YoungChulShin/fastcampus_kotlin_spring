@@ -1,5 +1,7 @@
 package basic
 
+// 인터페이스가 인터페이스 메서드 및 구현체를 가질 수 있다
+
 class Product(val name: String, val price: Int)
 
 interface Wheel {
@@ -7,7 +9,7 @@ interface Wheel {
 }
 
 interface Order {
-    fun printId()
+    fun printId() = println("11")
 }
 
 interface Cart: Wheel {
@@ -27,7 +29,7 @@ interface Cart: Wheel {
         println("카트가 굴러갑니다")
     }
 
-    fun printId()
+    fun printId() = println("12")
 }
 
 class MyCart(override var coin: Int) : Cart, Order {
@@ -38,7 +40,8 @@ class MyCart(override var coin: Int) : Cart, Order {
     }
 
     override fun printId() {
-        TODO("Not yet implemented")
+        super<Cart>.printId()
+        super<Order>.printId()
     }
 }
 

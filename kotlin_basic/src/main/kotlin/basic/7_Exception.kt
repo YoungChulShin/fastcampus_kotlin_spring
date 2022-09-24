@@ -13,18 +13,21 @@ fun main() {
         println("finally 실행")
     }
 
+    // try도 표현식이기 때문에 값을 받을 수 있다
     val a = try {
-        throw Exception()
+        "1111".toInt()
     } catch (e: Exception) {
         println("에러 발생")
     }
 
     println(a)
 
-    val b: String? = null
+    // 항상 FastFail하는 코드는 Nothing 타입을 반환한다
+    // elvis 연산자와 함께 사용하면
 
-    val c: String = b ?: fastFail("a is null")
-    println(c)
+    val nullable: String? = null
+    val nonnull: String = nullable ?: fastFail("is null")
+    println(nonnull)
 }
 
 fun fastFail(message: String): Nothing {
