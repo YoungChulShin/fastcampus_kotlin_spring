@@ -1,0 +1,4 @@
+package gettersetter
+
+class Student {
+}
