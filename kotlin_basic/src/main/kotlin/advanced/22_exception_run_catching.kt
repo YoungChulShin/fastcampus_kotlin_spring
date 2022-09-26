@@ -35,11 +35,12 @@ fun main() {
 //        throw it
 //    }
 
-    val result4 = runCatching { getStr() }
-        .getOrDefault("기본 값")
+    val result4 = runCatching { "ddd" }
+        .getOrThrow()
     println(result4)
 
 
+    // map에서 예외가 발생하면 throw 된다
     val result5 = runCatching { "하이" }
         .map { "${it}, 안녕하세요" }
         .getOrThrow()
@@ -51,6 +52,7 @@ fun main() {
 
     println(result6)
 
+    // getOrderDefault에 비해서 로직을 넣을 수 있다
     val result7 = runCatching { getStr() }
         .recover { "복구합니다" }
         .getOrNull()
@@ -58,7 +60,7 @@ fun main() {
     println(result7)
 
     val result8 = runCatching { getStr() }
-        .recoverCatching { "복구합니다" }
+        .recoverCatching { throw RuntimeException("test") }
         .getOrNull()
 
     println(result8)

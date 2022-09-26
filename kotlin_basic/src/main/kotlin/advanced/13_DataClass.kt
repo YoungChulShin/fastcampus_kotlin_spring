@@ -1,6 +1,6 @@
 package advanced
 
-// equals, hashcode, toString, copy
+// equals, hashcode, toString, copy, componentN
 data class Person(val name: String, val age: Int)
 
 fun main() {
@@ -18,10 +18,13 @@ fun main() {
     // copy - 불변 객체를 새롭게 만들 수 있다
     val person3 = person1.copy(name = "ycshin")
 
+    if (person3 == person1) println("동일") else println("다름")
+
     // component n
     // 변수에 대해서 component - n 의 변수가 생긴다
     println("이름: ${person3.component1()}, 나이: ${person3.component2()}")
 
+    // 구조분해 할당
     val (name, age) = person1
     println("이름: $name, 나이: $age")
 }

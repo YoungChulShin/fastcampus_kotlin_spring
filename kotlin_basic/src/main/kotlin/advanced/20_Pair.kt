@@ -5,6 +5,11 @@ data class Tuple(val a: Int, val b: Int)
 fun plus(tuple: Tuple) = tuple.a + tuple.b
 fun plus2(pair: Pair<Int, Int>) = pair.first + pair.second
 
+// Pair
+// - data
+// - 2개의 값을 넘기려고 할 때
+// - 불변
+// - toList
 fun main() {
     println(plus(Tuple(1, 2)))
 
@@ -14,6 +19,14 @@ fun main() {
     println(pair)
     val newPair = pair.copy("B")
     println(newPair)
+
+    val toList = pair.toList()
+
+    val triple = Triple(1, "2", "C")
+    for (key in triple.toList()) {
+        println(key)
+    }
+
 
     // 구조분해 할당
     val (a, b) = newPair

@@ -2,7 +2,7 @@ package advanced
 
 fun main() {
 
-    val str: String? = "hi"
+    val str: String? = null
 
     // let
     // - it으로 대상을 가리킬 수 있다

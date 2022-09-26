@@ -4,6 +4,7 @@ class HelloBot {
 
     // var greeting: String? = null
     // by lazy를 통해서 불변으로 만들면서, 지연초기화를 할 수 있다
+    // 멀티스레드에서도 안전하게 동작한다
     // 1회 실행된다
     val greeting: String by lazy {
         println("초기화")
