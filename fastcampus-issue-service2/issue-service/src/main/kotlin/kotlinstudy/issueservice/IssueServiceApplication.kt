@@ -1,11 +1,11 @@
-package study.kotlin.fastcampusissueservice2
+package kotlinstudy.issueservice
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class FastcampusIssueService2Application
+class IssueServiceApplication
 
 fun main(args: Array<String>) {
-	runApplication<FastcampusIssueService2Application>(*args)
+	runApplication<IssueServiceApplication>(*args)
 }
