@@ -24,11 +24,11 @@ class Issue(
 
     @Column
     @Enumerated(EnumType.STRING)
-    var issuePriority: IssuePriority,
+    var priority: IssuePriority,
 
     @Column
     @Enumerated(EnumType.STRING)
     var status: IssueStatus,
 
-): BaseEntity() {
+    ): BaseEntity() {
 }
