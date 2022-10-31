@@ -2,8 +2,11 @@ package kotlinstudy.issueservice.service
 
 import kotlinstudy.issueservice.domain.Issue
 import kotlinstudy.issueservice.domain.IssueRepository
+import kotlinstudy.issueservice.domain.IssueStatus
+import kotlinstudy.issueservice.exception.NotFoundException
 import kotlinstudy.issueservice.model.IssueRequest
 import kotlinstudy.issueservice.model.IssueResponse
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -24,5 +27,16 @@ class IssueService(
         )
 
         return IssueResponse(issueRepository.save(issue))
+    }
+
+    @Transactional(readOnly = true)
+    fun getAll(status: IssueStatus) =
+        issueRepository.findAllByStatusOrderByCreatedAtDesc(status)
+            ?.map { IssueResponse(it) }
+
+    @Transactional(readOnly = true)
+    fun get(id: Long): IssueResponse {
+        val issue = issueRepository.findByIdOrNull(id) ?: throw NotFoundException("이슈가 존재하지 않습니다")
+        return IssueResponse(issue)
     }
 }
