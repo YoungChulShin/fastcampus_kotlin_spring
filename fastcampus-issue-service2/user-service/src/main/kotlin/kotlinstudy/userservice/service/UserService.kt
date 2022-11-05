@@ -81,7 +81,7 @@ class UserService(
         return cachedUser
     }
 
-    private suspend fun get(userId: Long) : User {
+    suspend fun get(userId: Long) : User {
         return userRepository.findById(userId) ?: throw UserNotFoundExcpetion()
     }
 }
