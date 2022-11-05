@@ -3,6 +3,7 @@ package kotlinstudy.userservice.service
 import kotlinstudy.userservice.config.JWTProperties
 import kotlinstudy.userservice.domain.entity.User
 import kotlinstudy.userservice.domain.repository.UserRepository
+import kotlinstudy.userservice.exception.InvalidJwtTokenException
 import kotlinstudy.userservice.exception.PasswordNotMatchedException
 import kotlinstudy.userservice.exception.UserExistsException
 import kotlinstudy.userservice.exception.UserNotFoundExcpetion
@@ -68,5 +69,19 @@ class UserService(
 
     suspend fun logout(token: String) {
         cacheManager.awaitEvict(token)
+    }
+
+    suspend fun getByToken(token: String): User {
+        val cachedUser = cacheManager.awaitGetOrPut(key = token, ttl = CACHE_TTL) {
+            val decodedJWT = JWTUtils.decode(token, jwtProperties.secret, jwtProperties.issuer)
+            val userId = decodedJWT.claims["userId"]?.asLong() ?: throw InvalidJwtTokenException()
+            get(userId)
+        }
+
+        return cachedUser
+    }
+
+    private suspend fun get(userId: Long) : User {
+        return userRepository.findById(userId) ?: throw UserNotFoundExcpetion()
     }
 }

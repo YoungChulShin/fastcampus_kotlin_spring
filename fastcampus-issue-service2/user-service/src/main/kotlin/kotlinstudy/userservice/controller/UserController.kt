@@ -1,9 +1,6 @@
 package kotlinstudy.userservice.controller
 
-import kotlinstudy.userservice.model.AutoToken
-import kotlinstudy.userservice.model.SignInRequest
-import kotlinstudy.userservice.model.SignInResponse
-import kotlinstudy.userservice.model.SignUpRequest
+import kotlinstudy.userservice.model.*
 import kotlinstudy.userservice.service.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
@@ -28,5 +25,10 @@ class UserController(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     suspend fun logout(@AutoToken token: String) {
         userService.logout(token)
+    }
+
+    @GetMapping("/me")
+    suspend fun get(@AutoToken token: String) : MeResponse {
+        return MeResponse(userService.getByToken(token))
     }
 }
