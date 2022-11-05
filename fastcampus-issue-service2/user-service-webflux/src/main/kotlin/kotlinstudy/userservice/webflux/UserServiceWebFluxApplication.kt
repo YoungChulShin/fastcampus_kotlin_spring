@@ -11,4 +11,3 @@ class UserServiceWebFluxApplication
 fun main(args: Array<String>) {
     runApplication<UserServiceWebFluxApplication>(*args)
 }
-
